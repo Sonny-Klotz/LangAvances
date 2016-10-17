@@ -22,6 +22,7 @@ void tableauLecture(const int *tab, int taille)
 
 /* On peut récupérer la taille d'un tableau sans la passer en argument
  * avec un sizeof : sizeof(tab) / sizeof(type du tableau)
+ * /!\ qd on passe un tableau en arg de fonction, il est considere comme un pointeur et sizeof(ptr) / sizeof(int) == 2
  * */
 int main()
 {
