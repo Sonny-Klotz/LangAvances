@@ -65,6 +65,8 @@ int Automate::compteTion(const char* txt)
 	return count;
 }
 
+void fct(){ cout << "tibo t con" << endl;}
+
 //crée un automate qui reconnait la chaine "tion" pour la question 2.a
 int** creaAutomate(int S, int E)
 {
@@ -97,9 +99,8 @@ int main()
 	Automate *a = new Automate(5 , 256 , 0 , 4, tab);
 	//On a pas appris a manipuler les fichiers (ouverture, lecture, fermeture)
 	//une question de ce genre ne tombera surement pas, je modif un peu le sujet, Texte est un char *
-	const char *texte = "tionabction poazpopozertion";
+	const char *texte = "tionabction poazpopozertion"; fct();
 	cout << "nbre de 'tion' " << a->compteTion(texte) << endl;
-	
 	delete a;
 	int i; //delete de tab
 	for(i = 0; i < 256; i++) //S = 256
