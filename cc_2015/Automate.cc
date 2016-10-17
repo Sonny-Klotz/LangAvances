@@ -1,5 +1,5 @@
 #include <iostream>
-#include <string>
+#include <string.h>
 
 
 using namespace std;
@@ -33,10 +33,10 @@ Automate::Automate(int E, int S, int I, int F, int **t) //t est le tableau des t
 		symboles[i] = i;
 	
 	int j;
-	transition = new int[S]; //On lit un symbole
+	transition = new int*[S]; //On lit un symbole / alloue la memoire pour S pointeurs sur int
 	for(i = 0; i < S; i++)
 	{
-		transition[i] = new int[E]; //Pour chacun des etats de l'automate
+		transition[i] = new int[E]; //Pour chacun des etats de l'automate / alloue la memoire pour E int
 		for(j = 0; j < E; j++)
 			transition[i][j] = t[i][j]; //On obtient l'état sur lequel arrive la transition
 	}
@@ -62,15 +62,22 @@ int Automate::compteTion(const char* txt)
 		if(etatTmp == 4)
 			count++;
 	}
-	
+	return count;
 }
 
 //crée un automate qui reconnait la chaine "tion" pour la question 2.a
-int** creaAutomate(int x, int y)
+int** creaAutomate(int S, int E)
 {
 	//Un char est sur 1 octet 0 a 255
-	int t[x][y] = {0}; //init a 0 de base
 	int i,j;
+	int **t = new int*[S]; //init d'un tableau a 0;
+	for(i = 0; i < S; i++)
+	{
+		t[i] = new int[E]; 
+		for(j = 0; j < E; j++)
+			t[i][j] = 0;
+	}
+
 	for(i = 0; i < S; i++)
 	{
 		for(j = 0; j < E; j++)
@@ -86,12 +93,17 @@ int** creaAutomate(int x, int y)
 
 int main()
 {
-	Automate a = new Automate(5 , 256 , 0 , 4, creaAutomate(256, 5));
+	int **tab = creaAutomate(256, 5);
+	Automate *a = new Automate(5 , 256 , 0 , 4, tab);
 	//On a pas appris a manipuler les fichiers (ouverture, lecture, fermeture)
 	//une question de ce genre ne tombera surement pas, je modif un peu le sujet, Texte est un char *
-	char *texte = "tionabction poazpopozertion";
+	const char *texte = "tionabction poazpopozertion";
 	cout << "nbre de 'tion' " << a->compteTion(texte) << endl;
 	
-	
+	delete a;
+	int i; //delete de tab
+	for(i = 0; i < 256; i++) //S = 256
+		delete[] tab[i];
+	delete[] tab;
 	return 0;
 }
