@@ -63,7 +63,7 @@ void Point::cloner(const Point& p)
 class PointColor : public Point
 {
 	private:
-		char *color;
+		char *color; //on preferera travailler avec un enum por la couleur
 		
 	public:
 		PointColor(int abs, int ord, const char *couleur);
@@ -75,12 +75,10 @@ class PointColor : public Point
 		
 };
 
-PointColor::PointColor(int abs, int ord, const char *couleur)
+PointColor::PointColor(int abs, int ord, const char *couleur): Point(abs, ord)
 {
 	color = new char[100]; //on suppose qu'une couleur ne fait pas plus de 100 char
 	strcpy(color, couleur);
-	x = abs;
-	y = ord;
 }
 
 PointColor::PointColor(const PointColor& pc)

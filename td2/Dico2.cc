@@ -198,7 +198,7 @@ Dictionnaire& Dictionnaire::operator=(const Dictionnaire& dico)
 	return *this;
 }
 
-//jout dans l'ordre alphabetique
+//ajout dans l'ordre alphabetique : n'insere pas dans l'ordre alphabetique (j'ai oublié de modif la fonction de Vecteur2)
 Dictionnaire& Dictionnaire::operator+=(const Definition& def)
 {
 	if(tete == NULL)
