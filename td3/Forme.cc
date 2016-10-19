@@ -141,5 +141,9 @@ int main()
 		liste[i]->deplacer(-2, 3.8);
 		liste[i]->afficher();
 	}
+	delete s;
+	delete t;
+	delete r;
+	delete c;
 	return 0;
 }
