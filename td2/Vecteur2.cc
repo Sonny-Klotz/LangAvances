@@ -232,7 +232,7 @@ int Liste::operator[](int i)
 Liste& Liste::operator+=(int n)
 {
 	if(tete == NULL)
-		tete = new Noeud(n);
+		tete = new Noeud(n); //L'instruction se répète: on peut d'abord le créer, puis distinguer les cas
 	else
 	{
 		Noeud *tmp = tete;
@@ -240,6 +240,7 @@ Liste& Liste::operator+=(int n)
 		tete->setNext(tmp);
 	}
 	taille++;
+	return *this;
 }
 
 ostream& operator<<(ostream& o, Liste& v)

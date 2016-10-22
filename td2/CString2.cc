@@ -124,23 +124,23 @@ CString& CString::operator=(const CString& s)
 
 bool CString::operator==(const CString& c){ return strcmp(getString(), c.getString()) == 0;}
 
-int main()
-{
-	CString s1("toto"), s2('q'), s3;
-
-	cout << "nbreChaines = " << CString::getNbrChaine() << endl;
-	
-	s3 = s1 + 'w';
-	cout << "s3 = " << s3.getString() << endl;
-	
-	if(s1 >s2)
-		cout << s1.getString() << " plus grand que " << s2.getString() << endl;
-		
-	if(s1 <= s2)
-		cout << s1.getString() << " plus petit que " << s2.getString() << endl;
-	
-	s3 = s1.plusGrand(s2);
-	cout << "s3 = " << s3.getString() << endl;
-	
-	return 0;
-}
+//~ int main()
+//~ {
+	//~ CString s1("toto"), s2('q'), s3;
+//~ 
+	//~ cout << "nbreChaines = " << CString::getNbrChaine() << endl;
+	//~ 
+	//~ s3 = s1 + 'w';
+	//~ cout << "s3 = " << s3.getString() << endl;
+	//~ 
+	//~ if(s1 >s2)
+		//~ cout << s1.getString() << " plus grand que " << s2.getString() << endl;
+		//~ 
+	//~ if(s1 <= s2)
+		//~ cout << s1.getString() << " plus petit que " << s2.getString() << endl;
+	//~ 
+	//~ s3 = s1.plusGrand(s2);
+	//~ cout << "s3 = " << s3.getString() << endl;
+	//~ 
+	//~ return 0;
+//~ }
