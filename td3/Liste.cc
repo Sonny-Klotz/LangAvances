@@ -80,7 +80,7 @@ class CPile : public CList
 };
 
 CPile::CPile(){}
-CPile::~CPile(){ delete tete; }
+CPile::~CPile(){}//appel auto de celui de la classe de base
 void CPile::push(int i)
 {
 	CNoeud *ptr = tete;
@@ -103,7 +103,7 @@ class CFile : public CList
 };
 
 CFile::CFile(){}
-CFile::~CFile(){ delete tete; }
+CFile::~CFile(){}//appel auto de celui de la classe de base
 void CFile::push(int i)
 {
 	CNoeud *tmp = new CNoeud(i);
