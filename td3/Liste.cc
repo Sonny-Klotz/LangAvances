@@ -47,9 +47,9 @@ class CList
 		CList();
 		~CList();
 		virtual void push(int i) = 0;
-		virtual int getTop() = 0;
+		virtual int getTop() = 0; //la methode est commune, pas besoin d'etre abstraite (pareil pour l'opé >)
 		CNoeud* getTete() const;
-		virtual CList& operator<(int i) = 0; //voir main
+		virtual CList& operator<(int i) = 0; //voir commentaire main
 		virtual CList& operator>(int& i) = 0;
 };
 
@@ -59,7 +59,7 @@ CNoeud* CList::getTete() const{ return tete; }
 ostream& operator<<(ostream& o, const CList& p)
 {
 	CNoeud *ptr = p.getTete();
-	while(ptr != NULL)
+	while(ptr != NULL )
 	{
 		o << ptr->getVal() << ' ';
 		ptr = ptr->getNext();
@@ -99,7 +99,7 @@ class CFile : public CList
 		void push(int i);
 		int getTop();
 		CFile& operator<(int i);
-		CFile& operator>(int& i);
+		CFile& operator>(int& i); 
 };
 
 CFile::CFile(){}
@@ -131,6 +131,7 @@ int main()
 	
 	CList *ptlist = &file;
 	*ptlist < 0 < 1; //ptlist est de type CList, la methode doit etre definie au niveau statique pour pouvoir compiler
+	//voir indication dans le corps de la classe
 	cout << *ptlist;
 	int i;
 	*ptlist > i;
@@ -142,6 +143,8 @@ int main()
 	*ptlist > i;
 	cout << *ptlist << "i=" << i << endl;
 	//si l'exo demande pop, au lieu de getTop, definir la copie de liste pour gerer les delete correctement
+	//edit : on peut pop sans passer par la copie de liste : il faut sauvegarder le next, l'affecter a null puis delete la tete,
+	// on remet ensuite la tete a la valeur sauvegardé. le delete récursif s'arrete vu qu'affecte a null, et donc on conserve le reste de la liste
 	
 	return 0;
 }
