@@ -62,7 +62,7 @@ void Segment::afficher(){ cout << "Segment\npoint 1 : "; p1.afficher(); cout << 
 class Triangle : public Forme
 {
 	private:
-		Point p1;
+		Point p1; //Un tableau de 3 points est plus simple a manipuler
 		Point p2;
 		Point p3;
 	public:
