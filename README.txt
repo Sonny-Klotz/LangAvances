@@ -11,3 +11,10 @@ Supprimer ou commenter le main de CString2.cc
 	g++ -c CString2.cc
 	g++ -c Dico2.cc
 	g++ CString2.o Dico2.o
+
+Pour compiler getmax.cc :
+Se placer dans le répertoire td4
+Supprimer ou commenter le main de CString.cc
+	g++ -c ../td1/CString.cc
+	g++ -c getmax.cc
+	g++ CString.o getmax.o
