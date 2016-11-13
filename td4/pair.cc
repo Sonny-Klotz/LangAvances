@@ -1,4 +1,6 @@
 #include <iostream>
+#include <typeinfo> //Question 2, utilisation de typeid
+#include <cstring>
 
 using namespace std;
 
@@ -19,12 +21,19 @@ class Pair
 		~Pair(){} 
 		T getMax(){return (elt1 > elt2) ? elt1 : elt2;}//strcmp(typeid( elt1 ),"i") strcmp(typeid( elt1 ),"f")
 	friend ostream& operator<< <>(ostream& o, Pair<T>& pair);
+	//symbole <> pour indiquer que l'ope redef est generique
 };
 
 template<class T>
 ostream& operator<<(ostream& o, Pair<T>& pair)
 {
-	o << pair.elt1 << " " << pair.elt2;
+	const char *typePair = typeid(pair.elt1).name(); // Le type d'un elt de la paire suffit
+	if( strcmp("i", typePair) == 0 || strcmp("f", typePair) == 0) {
+		o << pair.elt1 << " " << pair.elt2;
+	}
+	else {
+		o << "fonction pas encore implémentée pour ce type";
+	}
 	return o;
 }
 
@@ -44,6 +53,7 @@ int main(){
 	char c1='c', c2='d';
 	Pair<char> myChars(c1,c2);//creer un objet qui contient une paire d’entiers
 	cout << myChars.getMax()<< endl;
+	cout << myChars << endl;
 	
 	return 0 ;
 }
