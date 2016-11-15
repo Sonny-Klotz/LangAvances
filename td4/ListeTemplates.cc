@@ -53,7 +53,7 @@ class CList
 		CNoeud<T> *tete;
 	public:
 		CList(){ tete = NULL; }
-		~CList(){ delete tete; tete = NULL; } // test NULL a faire
+		~CList(){if(tete != NULL){ delete tete; tete = NULL; }} // test NULL a faire
 		CNoeud<T>* getTete() const{ return tete; }
 		virtual CList<T>& operator<(T i) = 0;
 		CList<T>& operator>(T& i)
