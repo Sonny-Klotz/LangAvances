@@ -18,3 +18,10 @@ Supprimer ou commenter le main de CString.cc
 	g++ -c ../td1/CString.cc
 	g++ -c getmax.cc
 	g++ CString.o getmax.o
+	
+Pour compiler ListeTemplates.cc :
+Se placer dans le répertoire td4
+Supprimer ou commenter le main de CString.cc
+	g++ -c ../td1/CString.cc
+	g++ -c ListeTemplates.cc
+	g++ CString.o ListeTemplates.o
