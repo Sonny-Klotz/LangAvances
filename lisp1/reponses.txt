@@ -1,0 +1,38 @@
+Exercice 1
+1) 14
+2) (1 5)
+3) 7
+4) (NIL 3)
+
+Exercice 2
+(defun my-fourth(lst) (car (cdr (cdr (cdr lst)))))
+
+Exercice 3
+(defun my-max(x y) (if (> x y) x y ))
+
+Exercice 4 (recursif uniquement)
+(defun memberlistp(lst) (if (null lst) nil (if (listp (car lst)) t (memberlistp (cdr lst)))))
+
+Exercice 5 (recursif uniquement)
+(a)
+(defun points(entier)
+	(if (eql entier 0)
+		nil
+		(progn (format t ".") (points (- entier 1)))     ;progn permet de faire plusieurs instructions
+	)
+)
+
+(b)
+(defun counta(lst)
+	(if (null lst)
+		0
+		(if (eql 'a (car lst))
+			(+ 1 (counta (cdr lst))) 
+			(counta (cdr lst))    
+		)
+	)
+)
+
+Exercice 6
+_ enigme retourne vrai si un argument au moins est NIL d'une liste non vide
+_ mystere 
