@@ -5,13 +5,28 @@ Exercice 1
 4) (NIL 3)
 
 Exercice 2
-(defun my-fourth(lst) (car (cdr (cdr (cdr lst)))))
+(defun my-fourth(lst)
+	(car (cdr (cdr (cdr lst))))
+)
 
 Exercice 3
-(defun my-max(x y) (if (> x y) x y ))
+(defun my-max(x y)
+	(if (> x y)
+		x
+		y
+	)
+)
 
 Exercice 4 (recursif uniquement)
-(defun memberlistp(lst) (if (null lst) nil (if (listp (car lst)) t (memberlistp (cdr lst)))))
+(defun memberlistp(lst)
+	(if (null lst)
+		nil
+		(if (listp (car lst))
+			t
+			(memberlistp (cdr lst))
+		)
+	)
+)
 
 Exercice 5 (recursif uniquement)
 (a)
