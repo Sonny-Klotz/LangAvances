@@ -128,8 +128,8 @@ int main()
 	CPile<CString> pile;
 	CFile<CString> file;
 	
-	CString mot1("toto");
-	CString mot2("malek");
+	CString mot1("malek(sizeof())");
+	CString mot2("free");
 	
 	CList<CString> *ptlist = &file;
 	*ptlist < mot1 < mot2;
