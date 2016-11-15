@@ -1,6 +1,4 @@
-#include <iostream>
-
-using namespace std;
+#include "../td1/CString.h"
 
 template <class T>
 class CNoeud;
@@ -55,16 +53,18 @@ class CList
 		CNoeud<T> *tete;
 	public:
 		CList(){ tete = NULL; }
-		~CList(){ delete tete; tete = NULL; }
+		~CList(){ delete tete; tete = NULL; } // test NULL a faire
 		CNoeud<T>* getTete() const{ return tete; }
 		virtual CList<T>& operator<(T i) = 0;
 		CList<T>& operator>(T& i)
 		{
-			CNoeud<T> *tmp = tete->getNext();
-			tete->setNext(NULL);
-			i = tete->getVal();
-			delete tete;
-			tete = tmp;
+			if(tete != NULL) {
+				CNoeud<T> *tmp = tete->getNext();
+				tete->setNext(NULL);
+				i = tete->getVal();
+				delete tete;
+				tete = tmp;
+			}
 			return *this;
 		}
 		friend ostream& operator<< <>(ostream& o, const CList<T>& p);
@@ -125,18 +125,21 @@ class CFile : public CList<T>
 		
 int main()
 {
-	CPile<int> pile;
-	CFile<int> file;
+	CPile<CString> pile;
+	CFile<CString> file;
 	
-	CList<int> *ptlist = &file;
-	*ptlist < 0 < 1;
+	CString mot1("toto");
+	CString mot2("malek");
+	
+	CList<CString> *ptlist = &file;
+	*ptlist < mot1 < mot2;
 	cout << *ptlist;
-	int i;
+	CString i;
 	*ptlist > i;
 	cout << *ptlist << "i=" << i << endl;
 	
 	 ptlist = &pile;
-	 *ptlist < 0 < 1;
+	 *ptlist < mot1 < mot2;
 	cout << *ptlist;
 	*ptlist > i;
 	cout << *ptlist << "i=" << i << endl;

@@ -57,11 +57,13 @@ CNoeud* CList::getTete() const{ return tete; }
 
 CList& CList::operator>(int& i)
 {
-	CNoeud *tmp = tete->getNext();
-	tete->setNext(NULL);
-	i = tete->getVal();
-	delete tete;
-	tete = tmp;
+	if(tete != NULL) {
+		CNoeud *tmp = tete->getNext();
+		tete->setNext(NULL);
+		i = tete->getVal();
+		delete tete;
+		tete = tmp;
+	}
 	return *this;
 }
 

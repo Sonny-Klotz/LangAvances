@@ -1,3 +1,6 @@
+#include <iostream>
+using namespace std;
+
 class CString
 {
 	private:
@@ -22,4 +25,8 @@ class CString
 		bool infOuEgale(CString s);
 		CString plusGrand(CString s);
 		CString& operator=(const CString& s);
+		friend ostream& operator<<(ostream& o,const CString& s);
 };
+
+ostream& operator<<(ostream& o,const CString& s);
+

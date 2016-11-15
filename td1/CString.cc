@@ -1,33 +1,7 @@
 using namespace std;
 
-#include <iostream>
+#include "CString.h"
 #include <string.h>
-
-class CString
-{
-	private:
-		char *chaine;
-		int size;
-		static int nbreChaines; //variable partagée par l"ensemble des obj de la classe
-	
-	public:
-		CString();
-		CString(const char *chaine);
-		CString(const char c);
-		CString(const CString& s);//constructeur par copie
-		~CString();
-		static int getNbrChaine(){ return CString::nbreChaines; }
-		const char* getString() const;
-		//le const apres la methode indique qu'on ne va pas modifier l'objet receveur
-		//et sera donc compatible avec les objets const de la classe
-		char getChar(int i) const;
-		int getSize() const;
-		CString plus(const char c);
-		bool plusGrandQue(CString s);
-		bool infOuEgale(CString s);
-		CString plusGrand(CString s);
-		CString& operator=(const CString& s);
-};
 
 int CString::nbreChaines; //init a 0 implicitement
 
@@ -70,7 +44,7 @@ char CString::getChar(int i) const{ return chaine[i]; }
 
 CString::~CString()
 {
-	cout << "destruction de la chaine " << chaine << endl;
+	//cout << "destruction de la chaine " << chaine << endl;
 	delete[] chaine; //on détruit la chaine qu'on a alloue dynamiquement dans le constructeur
 	nbreChaines--;
 }
@@ -131,32 +105,39 @@ CString& CString::operator=(const CString& s)
 	return *this;
 }
 
-int main()
+ostream& operator<<(ostream& o,const CString& s)
 {
-	CString s1("toto"), s2('q'), s3;
+	const char *str =  s.getString();
+	o << str;
 	
-	//accession a la methode statique
-	cout << "nbreChaines = " << CString::getNbrChaine() << endl;
-	
-	s3 = s1.plus('w');
-	cout << "s3 = " << s3.getString() << endl;
-	
-	if(s1.plusGrandQue(s2))
-		cout << s1.getString() << " plus grand que " << s2.getString() << endl;
-		
-	if(s1.infOuEgale(s2))
-		cout << s1.getString() << " plus petit que " << s2.getString() << endl;
-	
-	s3 = s1.plusGrand(s2);
-	cout << "s3 = " << s3.getString() << endl;
-	
-	//Le destructeur est appelé plus de fois que précisé dans le main :
-	//cela est dû à la copie d'objets (voir diapo page 109 c++), 
-	//le constructeur par copie est appele automatiquement pour le "return" d'un objet CString
-	//et donc les appels du destructeur pour ces copies créées, les methodes plus et plusGrand en ont besoin
-	
-	//De plus l'operateur d'affectation doit etre redefini pour les lignes 141 et 150, ainsi que
-	//pour les methodes qui necessitent un CString en parametre (utilisation implicite de l'operateur
-	// pour la copie des param)
-	return 0;
+	return o;
 }
+//~ int main()
+//~ {
+	//~ CString s1("toto"), s2('q'), s3;
+	//~ 
+	//~ //accession a la methode statique
+	//~ cout << "nbreChaines = " << CString::getNbrChaine() << endl;
+	//~ 
+	//~ s3 = s1.plus('w');
+	//~ cout << "s3 = " << s3.getString() << endl;
+	//~ 
+	//~ if(s1.plusGrandQue(s2))
+		//~ cout << s1.getString() << " plus grand que " << s2.getString() << endl;
+		//~ 
+	//~ if(s1.infOuEgale(s2))
+		//~ cout << s1.getString() << " plus petit que " << s2.getString() << endl;
+	//~ 
+	//~ s3 = s1.plusGrand(s2);
+	//~ cout << "s3 = " << s3.getString() << endl;
+	//~ 
+	//~ //Le destructeur est appelé plus de fois que précisé dans le main :
+	//~ //cela est dû à la copie d'objets (voir diapo page 109 c++), 
+	//~ //le constructeur par copie est appele automatiquement pour le "return" d'un objet CString
+	//~ //et donc les appels du destructeur pour ces copies créées, les methodes plus et plusGrand en ont besoin
+	//~ 
+	//~ //De plus l'operateur d'affectation doit etre redefini pour les lignes 141 et 150, ainsi que
+	//~ //pour les methodes qui necessitent un CString en parametre (utilisation implicite de l'operateur
+	//~ // pour la copie des param)
+	//~ return 0;
+//~ }
