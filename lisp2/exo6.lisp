@@ -5,6 +5,8 @@
 	)
 )
 ; on concatene le premier elt à la fin de la liste
-; en cours on a vu cons pour concaténer, le résultat obtenu est legerement
-; different pcq la fonction est particuliere.
-; les deux args de append doivent etre des listes
+; taille d'une liste (length liste)
+
+;(cons elt lst) => liste normale
+;(cons lst elt) => liste imbriquée
+;(cons arg1 arg2) => concatene, avec arg1 le car, arg2 le cdr
