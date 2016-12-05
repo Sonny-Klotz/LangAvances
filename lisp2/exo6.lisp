@@ -5,7 +5,7 @@
 	)
 )
 ; on concatene le premier elt à la fin de la liste
-; taille d'une liste (length liste)
+; taille d'une liste (list-length liste)
 
 ;(cons elt lst) => liste normale
 ;(cons lst elt) => liste imbriquée
