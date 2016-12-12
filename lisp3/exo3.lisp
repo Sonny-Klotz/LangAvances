@@ -3,15 +3,16 @@
 		nil
 		(and 
 			(numberp (car liste))
-			(cons (+  indice (car liste)) (pos+_rec (cdr liste))) ;recupérer l'indice de l'elt
+			(if (= 1 (list-length liste))
+				liste
+				(append (pos+_rec (subseq liste 0 (1- (list-length liste))))
+						(list (+ (car (last liste)) (1- (list-length liste))))
+				)
+			)
 		)
 	)
 )
 
-;solutions
-;1 - fct auxiliaire (indice liste) : pas efficace O(|liste|²)
-;2 - deuxieme argument indice (actuel), modif le prototype de la fonction
-;3 - la liste est déf globalement (- (list-length **liste**) (list-length liste)) => calcul de l'indice
 
 (defun pos+_it (liste)
 	(if (or (not (listp liste)) (null liste))
@@ -30,3 +31,19 @@
 		)
 	)
 )
+
+(defun pos+_map (liste)
+	(if (or (not (listp liste)) (null liste))
+		nil
+		(let ((indice -1))
+			(mapcar #'(lambda (x)
+				(progn
+					(setf indice (1+ indice))
+					(+ x indice)
+				))
+				liste
+			)
+		)
+	)
+)
+
